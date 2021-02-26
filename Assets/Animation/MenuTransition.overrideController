@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuTransition
+  m_Controller: {fileID: 9100000, guid: 2f79efc48a93b5a4883e94ab29ca71e9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b83cf150947ae844091a206c67d7f0e4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b83cf150947ae844091a206c67d7f0e4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 03a5a8e5d1518da4aac19ab9ff1fba06, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 619e866c78b46704ba1b15a8202c6de7, type: 2}
