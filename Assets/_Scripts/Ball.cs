@@ -10,7 +10,6 @@ public class Ball : MonoBehaviour {
 
     public float maxRollSpeed;
     Vector3 startPos;
-    Vector2 normal = Vector2.up;
 
     bool rollActive = false;
     public bool suckedIn = false;
@@ -31,9 +30,9 @@ public class Ball : MonoBehaviour {
 
     //set rb settings depending on the gamemode
     private void Update() {
-        //if (gameManager.state == GameState.WIN) {
-        //    rb.isKinematic = false;
-        //} 
+        if (gameManager.state == GameState.WIN) {
+            rb.isKinematic = false;
+        }
     }
 
     // Update is called once per frame
@@ -108,8 +107,10 @@ public class Ball : MonoBehaviour {
         if (collision.transform.tag == "Floor" && !suckedIn) {
             rollActive = true;
         }
-        //saves normal to contact point
-        normal = collision.contacts[0].normal;
+    }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        rollActive = false;
     }
 }
