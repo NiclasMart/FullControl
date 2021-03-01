@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
     GameManager gameManager;
     Rigidbody2D rb;
 
-    public float rollSpeed;
+    public float maxRollSpeed;
     Vector3 startPos;
     Vector2 normal = Vector2.up;
 
@@ -16,37 +16,38 @@ public class Ball : MonoBehaviour {
     public bool suckedIn = false;
 
     private void Awake() {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
         fadeOutAnim = gameObject.GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
     void Start(){
-        rb.isKinematic = true;
         startPos = transform.position;
-        ResetPosition();
+        rb.isKinematic = true;
+        ResetBall();
 
     }
 
     //set rb settings depending on the gamemode
     private void Update() {
-        if (gameManager.state == GameState.WIN) {
-            rb.isKinematic = false;
-        } 
+        //if (gameManager.state == GameState.WIN) {
+        //    rb.isKinematic = false;
+        //} 
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
-        //fluff rolls if roll is activated
+    void FixedUpdate()
+    {
         if (rollActive) {
-            
-            //calculate slope with normal and correct speed
-            float slope = Vector2.Dot(Vector2.right, normal);
- 
-            Vector2 speed = rb.velocity;
-            speed.x = rollSpeed + 1.15f*rollSpeed*slope;
-            rb.velocity = speed;
+            MoveBall();
+        }
+    }
+
+    private void MoveBall()
+    {
+        if (Mathf.Abs(rb.angularVelocity) < maxRollSpeed) {
+            rb.AddTorque(-1);
         }
     }
 
@@ -55,9 +56,10 @@ public class Ball : MonoBehaviour {
     }
 
     //resets fluff to start conditions
-    public void ResetPosition() {
+    public void ResetBall() {
         rollActive = false;
         rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
         transform.position = startPos;
     }
 
@@ -87,7 +89,7 @@ public class Ball : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         //resets ball if it rolls ofscreen
         if (collision.tag == "Cleaner") {
-            ResetPosition();
+            ResetBall();
         }
         //lose level if the ball collides with spikes
         else if (collision.tag == "Spike") {

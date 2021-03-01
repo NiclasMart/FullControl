@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0c46d4e96bc58488fa15c34b0953ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 1.5
+  maxRollSpeed: 200
   suckedIn: 0
 --- !u!114 &1909845057
 MonoBehaviour:
@@ -271,7 +271,7 @@ MonoBehaviour:
   - {x: -0.34369755, y: -0.3064251, z: 0}
   m_ShapePathHash: -450500543
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51592
+  m_InstanceId: -160928
 --- !u!95 &3584100351302893592
 Animator:
   serializedVersion: 3
