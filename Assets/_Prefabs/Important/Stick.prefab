@@ -473,7 +473,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000c10a6ad4
   m_ShapePath:
   - {x: -0.43585253, y: -1.5129175, z: 0}
   - {x: -0.41065168, y: -1.6563475, z: 0}
@@ -503,7 +503,7 @@ MonoBehaviour:
   - {x: -0.28974438, y: -1.1826708, z: 0}
   m_ShapePathHash: 163298757
   m_Mesh: {fileID: 0}
-  m_InstanceId: 31002
+  m_InstanceId: -194502
 --- !u!58 &5897871677227367348
 CircleCollider2D:
   m_ObjectHideFlags: 0
