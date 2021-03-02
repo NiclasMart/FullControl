@@ -7,13 +7,15 @@ public class ConveyorBelt : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] bool invertDirection = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public bool InvertDirection { get => invertDirection; }
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
 
         if (rb != null) {
             Vector2 conveyorSpeed = new Vector2 (speed, 0);
-            if (invertDirection) {
+            if (InvertDirection) {
                 conveyorSpeed *= -1;
             }
             rb.velocity = conveyorSpeed;
